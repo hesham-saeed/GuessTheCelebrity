@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="xs_padding">4dp</dimen>
+    <dimen name="sm_padding">8dp</dimen>
+    <dimen name="md_padding">16dp</dimen>
+    <dimen name="lg_padding">32dp</dimen>
+    <dimen name="xs_margin">4dp</dimen>
+    <dimen name="sm_margin">8dp</dimen>
+    <dimen name="md_margin">16dp</dimen>
+    <dimen name="lg_margin">32dp</dimen>
+    <dimen name="zero_dimen">0dp</dimen>
+
+
+</resources>
