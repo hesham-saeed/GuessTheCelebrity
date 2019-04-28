@@ -217,8 +217,8 @@ public class CelebrityFragment extends Fragment implements View.OnClickListener 
 
         @Override
         protected void onPostExecute(String s) {
-            ArrayList<String> celebritiesImages = extractImages(s);
-            ArrayList<String> celebritiesList = extractCelebrities(s);
+            ArrayList<String> celebritiesImages = WebParser.extractImages(s);
+            ArrayList<String> celebritiesList = WebParser.extractCelebrities(s);
 
             for (int i = 0; i < celebritiesImages.size(); i++) {
                 celebritiesData.add(new Pair<>(celebritiesImages.get(i), celebritiesList.get(i)));
@@ -239,30 +239,5 @@ public class CelebrityFragment extends Fragment implements View.OnClickListener 
         } else {
             new ImageDownloader(celebrityName).execute(imageUrl);
         }
-    }
-
-    //extracting data from a webpage
-    private ArrayList<String> extractImages(String html) {
-        ArrayList<String> imageUrls = new ArrayList<>();
-        Pattern pattern = Pattern.compile("<img src=\"(.*?)\" alt");
-        Matcher matcher = pattern.matcher(html);
-        while (matcher.find()) {
-            String url = matcher.group(1);
-            imageUrls.add(url);
-        }
-        Log.d(TAG, "found " + imageUrls.size() + " images");
-        return imageUrls;
-    }
-
-    private ArrayList<String> extractCelebrities(String html) {
-        ArrayList<String> celebrities = new ArrayList<>();
-        Pattern pattern = Pattern.compile(" alt=\"(.*?)\"/>");
-        Matcher matcher = pattern.matcher(html);
-        while (matcher.find()) {
-            String celebrity = matcher.group(1);
-            celebrities.add(celebrity);
-        }
-        Log.d(TAG, "found " + celebrities.size() + " celebrities");
-        return celebrities;
     }
 }
